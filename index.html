@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Undangan Pernikahan</title>
-    <!-- Google Fonts (Memuat Font Tangerine) -->
+    <title>Undangan Pernikahan Sutar & Devi</title>
+    
+    <!-- Meta Tag Pratinjau Link WhatsApp & Medsos (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/">
+    <meta property="og:title" content="The Wedding of Sutar & Devi">
+    <meta property="og:description" content="Sabtu, 07 November 2026 - Kami mengundang Anda untuk berbagi kebahagiaan di hari pernikahan kami.">
+    <meta property="og:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/bga2.jpeg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Wedding of Sutar & Devi">
+    <meta name="twitter:description" content="Sabtu, 07 November 2026 - Kami mengundang Anda untuk berbagi kebahagiaan di hari pernikahan kami.">
+    <meta name="twitter:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/bga2.jpeg">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Tangerine:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Warna Teks & Tema Utama Dalam Undangan (Cokelat) */
-            --text-color: #4a3b32;       /* Cokelat Tua / Dark Warm Brown */
-            --accent-color: #8c6d46;     /* Cokelat Keemasan / Warm Bronze */
+            --text-color: #4a3b32;       /* Cokelat Tua */
+            --accent-color: #8c6d46;     /* Cokelat Keemasan */
             --card-bg: #ffffff;          /* Putih Polos */
             
-            /* Warna Khusus Halaman Sampul (Cover Gelap) & Teks Tanpa Card */
             --cover-text: #ffffff;
             --cover-accent: #f3f1ed;
-            --bg-overlay-cover: rgba(0, 0, 0, 0.65);
-            --bg-overlay-inside: rgba(0, 0, 0, 0.35); /* Transparansi ringan untuk background BG2 */
+            --bg-overlay-cover: rgba(0, 0, 0, 0.26);
+            --bg-overlay-inside: rgba(0, 0, 0, 0.26);
         }
 
         * {
@@ -30,18 +41,19 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* MENGHILANGKAN BARS SCROLLBAR HORIZONTAL */
         html, body {
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow-x: hidden !important;
             font-family: 'Poppins', sans-serif;
             color: var(--text-color);
             background-color: #1a1a1a;
         }
 
-        /* CONTAINER KHUSUS DISET SEUKURAN LAYAR HP (BACKGROUND UTAMA BGA2.JPEG) */
+        /* CONTAINER KHUSUS LAYAR HP */
         .mobile-wrapper {
-            max-width: 430px; /* Lebar maksimal rata-rata HP */
+            max-width: 430px;
             height: 100vh;
             height: 100dvh;
             margin: 0 auto;
@@ -52,10 +64,19 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow-y: auto;
-            scroll-snap-type: y mandatory; /* Agar scroll otomatis pas di layar */
+            overflow-x: hidden !important;
+            scroll-snap-type: y mandatory;
         }
 
-        /* BACKGROUND SAMPUL / COVER (SEBELUM DIBUKA) -> MENGGUNAKAN BG1.JPEG */
+        .mobile-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .mobile-wrapper {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* COVER / DEPAN */
         #cover {
             position: fixed;
             top: 0;
@@ -85,15 +106,16 @@
             visibility: hidden;
         }
 
-        /* Style Nama Pengantin Menggunakan Font Tangerine */
         #cover h1.title,
         .hero-header .couple-title,
         .couple-name-no-card {
             font-family: 'Tangerine', cursive;
-            font-size: 2.5rem;      /* Ukuran agak disesuaikan karena font Tangerine ramping */
-            font-weight: 900;       /* Dipakai bold agar lebih tegas di atas background */
+            font-size: 2.5rem;
+            font-weight: 700;
             line-height: 1.1;
             letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
         }
 
         .cover-guest-box {
@@ -107,7 +129,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Button Utama */
         .btn {
             background-color: var(--accent-color);
             color: #ffffff;
@@ -129,7 +150,6 @@
             background-color: #6e5434;
         }
 
-        /* SEKSI PER SLIDE (SETIAP BAGIAN PAS 1 LAYAR HP) */
         .section-slide {
             min-height: 100vh;
             min-height: 100dvh;
@@ -140,13 +160,13 @@
             align-items: center;
             padding: 50px 20px 30px 20px;
             text-align: center;
+            overflow-x: hidden !important;
         }
 
-        /* SLIDE PERTAMA: FOTO PENGANTIN BERDUA FULL 1 LAYAR */
         .first-hero-slide {
             color: #ffffff;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.65) 100%), url('bga2.jpeg');
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.26) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%), url('bga2.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -216,7 +236,6 @@
             display: block;
         }
 
-        /* SECTION MEMPELAI TANPA CARD (LANGSUNG TEKS & FOTO) */
         .hero-section {
             color: #ffffff;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
@@ -232,9 +251,9 @@
 
         .bride-groom-profile {
             margin: 10px 0;
+            width: 100%;
         }
 
-        /* FOTO MEMPELAI PERSEGI PANJANG & TANPA BINGKAI */
         .profile-img-rect {
             width: 140px;
             height: 190px;
@@ -246,12 +265,12 @@
         }
 
         .parents-name {
-            font-size: 0.90rem;
-            color: #e8e2d9;
-            font-weight: 300;
+            font-size: 0.88rem;
+            color: #f3f1ed;
+            font-weight: 400;
+            line-height: 1.35;
         }
 
-        /* KARTU ISI UNDANGAN PUTIH POLOS */
         .card {
             background: var(--card-bg);
             border-radius: 16px;
@@ -293,15 +312,13 @@
             background-color: #ddd;
         }
 
-        /* Foto 1 & 2: Kolase Berdampingan (Tinggi / Portrait) */
         .gallery-item.tall {
             aspect-ratio: 3 / 4;
         }
 
-        /* Foto 3 Sampai 8: Memanjang ke bawah satu per satu (Full Lebar & Tinggi) */
         .gallery-item.full-single {
-            grid-column: span 2;  /* Memenuhi seluruh lebar (1 foto per baris) */
-            aspect-ratio: 4 / 5;  /* Sangat tinggi & besar, tidak terpotong */
+            grid-column: span 2;
+            aspect-ratio: 4 / 5;
         }
 
         .gallery-item img {
@@ -311,7 +328,6 @@
             display: block;
         }
 
-        /* FORM UCAPAN & DOA */
         .wish-form input,
         .wish-form textarea {
             width: 100%;
@@ -334,7 +350,6 @@
             background-color: #ffffff;
         }
 
-        /* DAFTAR UCAPAN / KOMENTAR */
         .wish-list {
             max-height: 140px;
             overflow-y: auto;
@@ -373,7 +388,6 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
 
-        /* TOMBOL MUSIK MELAYANG (FLOATING) */
         .music-btn {
             position: fixed;
             bottom: 25px;
@@ -402,38 +416,78 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        /* STYLE UNTUK HITUNG MUNDUR (COUNTDOWN) */
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 15px;
-}
 
-.countdown-box {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    padding: 8px 12px;
-    min-width: 55px;
-    text-align: center;
-    color: #ffffff;
-}
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
 
-.countdown-number {
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-}
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 8px 12px;
+            min-width: 55px;
+            text-align: center;
+            color: #ffffff;
+        }
 
-.countdown-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.85;
-}
+        .countdown-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        /* ========================================================
+           EFEK ANIMASI SCROLL (SLIDE 1 DIAM, SLIDE LAINNYA BERGERAK)
+           ======================================================== */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
     </style>
 </head>
 <body>
@@ -449,9 +503,9 @@
     </button>
 
     <!-- WRAPPER UTAMA -->
-    <div class="mobile-wrapper">
+    <div class="mobile-wrapper" id="mainWrapper">
 
-        <!-- COVER / DEPAN (MENGGUNAKAN BG1.JPEG) -->
+        <!-- COVER / DEPAN -->
         <div id="cover">
             <p style="letter-spacing: 2px; font-size: 0.8rem;">THE WEDDING OF</p>
             <h1 class="title">Sutar & Devi</h1>
@@ -464,7 +518,7 @@
             <button class="btn" style="background-color: var(--cover-accent); color: #333;" onclick="openInvitation()">Buka Undangan</button>
         </div>
 
-        <!-- SLIDE 1: FOTO UTAMA PENGANTIN FULL 1 LAYAR -->
+        <!-- SLIDE 1: FOTO UTAMA PENGANTIN (DIAM / TANPA EFEK GESER) -->
         <div class="section-slide first-hero-slide">
             <div class="hero-header">
                 <p class="subtitle">THE WEDDING OF</p>
@@ -477,7 +531,6 @@
             </div>
 
             <div class="hero-footer">
-                <!-- KOTAK HITUNG MUNDUR (DI ATAS AYAT) -->
                 <div class="countdown-container" id="countdown" style="margin-bottom: 20px;">
                     <div class="countdown-box">
                         <div class="countdown-number" id="days">00</div>
@@ -497,7 +550,6 @@
                     </div>
                 </div>
 
-                <!-- AYAT MATIUS 19:6 -->
                 <p class="bible-verse">
                     "Demikianlah Mereka Bukan Lagi Dua, Melainkan Satu. Karena Itu, Apa Yang Telah Dipersatukan Allah, Tidak Boleh Diceraikan Manusia."
                     <span class="verse-ref">Matius 19 : 6</span>
@@ -505,23 +557,21 @@
             </div>
         </div>
 
-        <!-- SLIDE 2: SECTION PEMBUKA & FOTO MEMPELAI -->
+        <!-- SLIDE 2: MEMPELAI (DENGAN EFEK GESER SAMPING) -->
         <div class="section-slide hero-section">
-            <p class="hero-opening">
-    Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia pernikahan kami:
-</p>
+            <p class="hero-opening reveal-up">
+                Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia pernikahan kami:
+            </p>
 
-            <!-- MEMPELAI PRIA -->
-            <div class="bride-groom-profile">
+            <div class="bride-groom-profile reveal-left">
                 <img src="ppl1.jpeg" alt="Foto Mempelai Pria" class="profile-img-rect">
                 <h2 class="couple-name-no-card">Sutardiono, S.Kep,Ners</h2>
                 <p class="parents-name">Putra dari Bapak Balmasius Sugianto & Ibu Tarida</p>
             </div>
 
-            <p style="font-family: 'Tangerine', cursive; font-size: 3rem; color: #ffffff; margin: 5px 0; font-weight: 700;">&</p>
+            <p class="reveal-up delay-1" style="font-family: 'Tangerine', cursive; font-size: 3rem; color: #ffffff; margin: 5px 0; font-weight: 700;">&</p>
 
-            <!-- MEMPELAI WANITA -->
-            <div class="bride-groom-profile">
+            <div class="bride-groom-profile reveal-right">
                 <img src="ppw.jpeg" alt="Foto Mempelai Wanita" class="profile-img-rect">
                 <h2 class="couple-name-no-card">Petronela Sonia Devi, S.Ak</h2>
                 <p class="parents-name">Putri dari Bapak Fedelis (alm) & Ibu Marsia Martina</p>
@@ -530,7 +580,7 @@
 
         <!-- SLIDE 3: CARD 1 (PEMBERKATAN GEREJA) -->
         <div class="section-slide">
-            <div class="card">
+            <div class="card reveal-up">
                 <h2 style="color: var(--accent-color); font-weight: 600; font-size: 1.2rem;">Pemberkatan Perkawinan</h2>
                 <div class="date-box">Sabtu, 07 November 2026</div>
                 
@@ -547,7 +597,7 @@
 
         <!-- SLIDE 4: CARD 2 (PESTA ADAT / RESEPSI) -->
         <div class="section-slide">
-            <div class="card">
+            <div class="card reveal-up">
                 <h2 style="color: var(--accent-color); font-weight: 600; font-size: 1.2rem;">Pesta Adat</h2>
                 <div class="date-box">Sabtu, 07 November 2026</div>
                 
@@ -564,29 +614,26 @@
 
         <!-- SLIDE 5: GALERI FOTO -->
         <div class="section-slide" style="justify-content: center; min-height: auto; padding-top: 40px; padding-bottom: 40px;">
-            <h2 class="gallery-title" style="font-family: 'Tangerine', cursive; font-size: 3.8rem; font-weight: 700; color: #ffffff;">Our Gallery</h2>
+            <h2 class="gallery-title reveal-up" style="font-family: 'Tangerine', cursive; font-size: 3.8rem; font-weight: 700; color: #ffffff;">Our Gallery</h2>
             <div class="gallery-grid">
-                <!-- FOTO 1 & 2: KOLASE BERDAMPINGAN -->
-                <div class="gallery-item tall"><img src="oga2.jpeg" alt="Foto 1"></div>
-                <div class="gallery-item tall"><img src="oga4.jpeg" alt="Foto 2"></div>
+                <div class="gallery-item tall reveal-left delay-1"><img src="oga2.jpeg" alt="Foto 1"></div>
+                <div class="gallery-item tall reveal-right delay-1"><img src="oga4.jpeg" alt="Foto 2"></div>
                 
-                <!-- FOTO 3 SAMPAI 8: SATU-SATU MEMANJANG KE BAWAH -->
-                <div class="gallery-item full-single"><img src="oga3.jpeg" alt="Foto 3"></div>
-                <div class="gallery-item full-single"><img src="oga1.jpeg" alt="Foto 4"></div>
-                <div class="gallery-item full-single"><img src="ogb4.jpeg" alt="Foto 5"></div>
-                <div class="gallery-item full-single"><img src="ogb3.jpeg" alt="Foto 6"></div>
-                <div class="gallery-item full-single"><img src="ogb2.jpeg" alt="Foto 7"></div>
-                <div class="gallery-item full-single"><img src="ogb1.jpeg" alt="Foto 8"></div>
+                <div class="gallery-item full-single reveal-up"><img src="oga3.jpeg" alt="Foto 3"></div>
+                <div class="gallery-item full-single reveal-up"><img src="oga1.jpeg" alt="Foto 4"></div>
+                <div class="gallery-item full-single reveal-up"><img src="ogb4.jpeg" alt="Foto 5"></div>
+                <div class="gallery-item full-single reveal-up"><img src="ogb3.jpeg" alt="Foto 6"></div>
+                <div class="gallery-item full-single reveal-up"><img src="ogb2.jpeg" alt="Foto 7"></div>
+                <div class="gallery-item full-single reveal-up"><img src="ogb1.jpeg" alt="Foto 8"></div>
             </div>
         </div>
 
         <!-- SLIDE 6: AMPLOP DIGITAL -->
         <div class="section-slide">
-            <div class="card">
+            <div class="card reveal-up">
                 <h2 style="color: var(--accent-color); margin-bottom: 10px; font-weight: 600; font-size: 1.2rem;">Amplop Digital</h2>
                 <p style="font-size: 0.78rem; opacity: 0.85; margin-bottom: 15px;">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberi hadiah, Anda dapat menggunakan rekening di bawah ini:</p>
                 <div style="background: #fbf9f7; padding: 18px 15px; border-radius: 12px; border: 1px solid #ebdcd0; margin-bottom: 5px; text-align: center;">
-                    <!-- LOGO BANK BRI -->
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_2020.svg" alt="Logo BRI" style="height: 35px; width: auto; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
                     
                     <p id="norek" style="font-size: 1.15rem; letter-spacing: 1.5px; font-weight: 600; margin: 6px 0; color: var(--text-color);">203701014462500</p>
@@ -598,7 +645,7 @@
 
         <!-- SLIDE 7: UCAPAN & DOA -->
         <div class="section-slide" style="justify-content: center;">
-            <div class="card">
+            <div class="card reveal-up">
                 <h2 style="color: var(--accent-color); font-weight: 600; margin-bottom: 4px; font-size: 1.1rem;">Ucapan & Doa</h2>
                 <p style="font-size: 0.75rem; opacity: 0.85; margin-bottom: 12px;">Berikan ucapan dan doa restu kepada kedua mempelai</p>
                 
@@ -620,11 +667,10 @@
                 </div>
             </div>
 
-            <footer>
+            <footer class="reveal-up delay-1">
                 <p style="font-size: 0.85rem; opacity: 0.9;">Terima Kasih</p>
                 <p style="margin-top: 3px; font-weight: 600; font-size: 0.95rem;">Mempelai & Keluarga</p>
                 
-                <!-- PERSONAL BRANDING TIA ANGERTI -->
                 <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.72rem; opacity: 0.85; letter-spacing: 0.5px;">
                     <p>Created with ❤️ by <a href="https://github.com" target="_blank" style="color: #ffffff; font-weight: 600; text-decoration: underline;">Tia Angerti</a></p>
                 </div>
@@ -634,22 +680,21 @@
     </div>
 
     <script>
-        // Masukkan URL Google Apps Script Web App kamu di sini
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxwJ-PsqW-HbFG722RdHRP5681dl9TUupktNBqgc48LOymsQ9mFUh5QiLsTTD78DAgDMA/exec';
 
         const urlParams = new URLSearchParams(window.location.search);
-        const guest = urlParams.get('to');
+        let rawGuestName = urlParams.get('to');
         const guestElement = document.getElementById('guest-name');
         const nameInput = document.getElementById('wish-name');
-        
-        if (guest) {
-            if (guestElement) guestElement.innerText = guest;
-            if (nameInput) nameInput.value = guest;
+
+        if (rawGuestName) {
+            let guestName = decodeURIComponent(rawGuestName);
+            if (guestElement) guestElement.innerText = guestName;
+            if (nameInput) nameInput.value = guestName;
         } else {
             if (guestElement) guestElement.innerText = "Tamu Undangan";
         }
 
-        // FUNGSI BUKA UNDANGAN + AUTOPLAY MUSIK
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-control');
         const musicIcon = document.getElementById('music-icon');
@@ -664,9 +709,10 @@
                     console.log("Autoplay dicegah browser:", err);
                 });
             }
+
+            setTimeout(triggerScrollAnim, 200);
         }
 
-        // FUNGSI PLAY / PAUSE MUSIK
         function toggleMusic() {
             if (bgMusic.paused) {
                 bgMusic.play();
@@ -686,7 +732,6 @@
             });
         }
 
-        // FUNGSI MEMBACA / MENAMPILKAN UCAPAN DARI GOOGLE SHEETS
         function loadWishes() {
             const wishList = document.getElementById('wish-list');
             
@@ -694,9 +739,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data && data.length > 0) {
-                        wishList.innerHTML = ''; // Bersihkan kontainer
-                        
-                        // Tampilkan ucapan terbaru di paling atas
+                        wishList.innerHTML = '';
                         data.reverse().forEach(item => {
                             const newWish = document.createElement('div');
                             newWish.className = 'wish-item';
@@ -711,11 +754,10 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Gagal memuat ucapan dari Google Sheets:', error);
+                    console.error('Gagal memuat ucapan:', error);
                 });
         }
 
-        // FUNGSI MENGIRIM UCAPAN BARU KE GOOGLE SHEETS
         function addWish(e) {
             e.preventDefault();
             
@@ -740,8 +782,6 @@
             .then(() => {
                 alert('Terima kasih atas ucapan dan doa restunya!');
                 document.getElementById('wish-message').value = '';
-                
-                // Ambil ulang daftar ucapan terbaru agar langsung nampil
                 setTimeout(loadWishes, 1500);
             })
             .catch(error => {
@@ -754,10 +794,8 @@
             });
         }
 
-        // Panggil fungsi loadWishes otomatis saat halaman selesai dimuat
         window.addEventListener('DOMContentLoaded', loadWishes);
-        // SCRIPT HITUNG MUNDUR (COUNTDOWN TIMER)
-        // Set tanggal pernikahan: 7 November 2026 jam 09:00:00
+
         const weddingDate = new Date("November 7, 2026 09:00:00").getTime();
 
         const countdownTimer = setInterval(function() {
@@ -780,6 +818,25 @@
             document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
             document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
         }, 1000);
+
+        function triggerScrollAnim() {
+            const targets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const wrapper = document.getElementById('mainWrapper');
+            const wrapperHeight = wrapper.clientHeight;
+
+            targets.forEach(target => {
+                const rect = target.getBoundingClientRect();
+                
+                if (rect.top <= wrapperHeight * 0.85 && rect.bottom >= wrapperHeight * 0.15) {
+                    target.classList.add('active');
+                } else {
+                    target.classList.remove('active');
+                }
+            });
+        }
+
+        document.getElementById('mainWrapper').addEventListener('scroll', triggerScrollAnim);
+        window.addEventListener('DOMContentLoaded', triggerScrollAnim);
     </script>
 </body>
 </html>
