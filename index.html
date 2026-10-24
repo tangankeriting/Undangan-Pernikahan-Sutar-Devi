@@ -11,7 +11,7 @@
     <meta property="og:title" content="The Wedding of Sutar & Devi">
     <meta property="og:description" content="Sabtu, 07 November 2026 - Kami mengundang Anda untuk berbagi kebahagiaan di hari pernikahan kami.">
     
-    <meta property="og:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/sampul2.jpeg">
+    <meta property="og:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/oga2.jpeg">
     <meta property="og:image:secure_url" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/sampul2.jpeg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Wedding of Sutar & Devi">
     <meta name="twitter:description" content="Sabtu, 07 November 2026 - Kami mengundang Anda untuk berbagi kebahagiaan di hari pernikahan kami.">
-    <meta name="twitter:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/oga2.jpeg">
+    <meta name="twitter:image" content="https://tangankeriting.github.io/Undangan-Pernikahan-Sutar-Devi/sampul2.jpeg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,8 +112,7 @@
         }
 
         #cover h1.title,
-        .hero-header .couple-title,
-        .couple-name-no-card {
+        .hero-header .couple-title {
             font-family: 'Tangerine', cursive;
             font-size: 2.3rem;
             font-weight: 700;
@@ -121,6 +120,18 @@
             letter-spacing: 1px;
             color: #ffffff;
             text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* KHUSUS NAMA MEMPELAI AGAR TETAP 1 BARIS LURUS DI HP */
+        .couple-name-no-card {
+            font-family: 'Tangerine', cursive;
+            font-size: 2.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+            white-space: nowrap;
         }
 
         .cover-guest-box {
@@ -302,35 +313,29 @@
             margin: 15px 0;
         }
 
+        /* GALERI FOTO TANPA BINGKAI DAN TANPA SUDUT OVAL (LANCIP) */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            column-count: 2;
+            column-gap: 12px;
             width: 100%;
         }
 
         .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 0px; /* Sudut dibuat lancip / siku-siku */
+            border: none;       /* Bingkai putih dihilangkan total */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             background-color: #ddd;
-        }
-
-        .gallery-item.tall {
-            aspect-ratio: 3 / 4;
-        }
-
-        .gallery-item.full-single {
-            grid-column: span 2;
-            aspect-ratio: 4 / 5;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
+            object-fit: cover;
+            cursor: pointer;
         }
 
         .wish-form input,
@@ -491,6 +496,67 @@
         .delay-1 { transition-delay: 0.15s; }
         .delay-2 { transition-delay: 0.3s; }
         .delay-3 { transition-delay: 0.45s; }
+
+        /* POPUP LIGHTBOX FOTO GALERI & TOMBOL UNDUH */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .lightbox-download-btn {
+            margin-top: 15px;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .lightbox-download-btn:hover {
+            transform: scale(1.05);
+            background-color: #6e5434;
+        }
     </style>
 </head>
 <body>
@@ -591,7 +657,7 @@
 
                 <p style="font-weight: 600; font-size: 0.95rem; color: var(--accent-color);">Waktu & Tempat</p>
                 <p style="font-weight: 600; margin-top: 5px; font-size: 0.85rem;">Pukul 09.00 WIB - Selesai</p>
-                <p style="font-size: 0.85rem; margin-top: 5px; font-weight: 600;">Gereja GUPDI Perupuk Mentah</p>
+                <p style="font-size: 0.85rem; margin-top: 5px; font-weight: 600;">Gereja GUPDI Prupuk Mentah</p>
                 <p style="font-size: 0.78rem; opacity: 0.8; margin-top: 2px;">Jl. Mandala, Dusun Prupuk Mentah, Desa Tapang Semadak, Kecamatan Sekadau Hilir, Kabupaten Sekadau, Kalimantan Barat </p>
 
                 <a href="https://maps.app.goo.gl/aofCSB7jCZZAzGEu7" target="_blank" class="btn">Lokasi Gereja</a>
@@ -609,7 +675,7 @@
                 <p style="font-weight: 600; font-size: 0.95rem; color: var(--accent-color);">Waktu & Tempat</p>
                 <p style="font-weight: 600; margin-top: 5px; font-size: 0.85rem;">Pukul 14.00 WIB - Selesai</p>
                 <p style="font-size: 0.85rem; margin-top: 5px; font-weight: 600;">Rumah Mempelai Pria</p>
-                <p style="font-size: 0.78rem; opacity: 0.8; margin-top: 2px;">Jl. Mandala, Dusun Prupuk Mentah, Desa Tapang Semadak, Kecamatan Sekadau Hilir, Kabupaten Sekadau, Kalimantan Barat</p>
+                <p style="font-size: 0.78rem; opacity: 0.8; margin-top: 2px;">Jl. Mandala, Dusun Prupuk Mentah, Desa Tapang Semadak, Kecamatan Sekadau Hilir, Kabupaten Sekadau, Kalimantan Barat </p>
 
                 <a href="https://maps.app.goo.gl/aofCSB7jCZZAzGEu7" target="_blank" class="btn">Lokasi Pesta Adat</a>
             </div>
@@ -617,17 +683,17 @@
 
         <!-- SLIDE 5: GALERI FOTO -->
         <div class="section-slide" style="justify-content: center; min-height: auto; padding-top: 40px; padding-bottom: 40px;">
-            <h2 class="gallery-title reveal-up" style="font-family: 'Tangerine', cursive; font-size: 3.8rem; font-weight: 700; color: #ffffff;">Our Gallery</h2>
+            <h2 class="gallery-title reveal-up" style="font-family: 'Tangerine', cursive; font-size: 3.8rem; font-weight: 700; color: #ffffff; margin-bottom: 20px;">Our Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item tall reveal-left delay-1"><img src="oga2.jpeg" alt="Foto 1"></div>
-                <div class="gallery-item tall reveal-right delay-1"><img src="oga4.jpeg" alt="Foto 2"></div>
+                <div class="gallery-item reveal-left delay-1"><img src="oga1.jpeg" alt="Foto 1"></div>
+                <div class="gallery-item reveal-left delay-2"><img src="oga2.jpeg" alt="Foto 2"></div>
+                <div class="gallery-item reveal-left delay-3"><img src="ogb1.jpeg" alt="Foto 3"></div>
+                <div class="gallery-item reveal-left delay-1"><img src="ogb4.jpeg" alt="Foto 4"></div>
                 
-                <div class="gallery-item full-single reveal-up"><img src="oga3.jpeg" alt="Foto 3"></div>
-                <div class="gallery-item full-single reveal-up"><img src="oga1.jpeg" alt="Foto 4"></div>
-                <div class="gallery-item full-single reveal-up"><img src="ogb4.jpeg" alt="Foto 5"></div>
-                <div class="gallery-item full-single reveal-up"><img src="ogb3.jpeg" alt="Foto 6"></div>
-                <div class="gallery-item full-single reveal-up"><img src="ogb2.jpeg" alt="Foto 7"></div>
-                <div class="gallery-item full-single reveal-up"><img src="ogb1.jpeg" alt="Foto 8"></div>
+                <div class="gallery-item reveal-right delay-1"><img src="oga3.jpeg" alt="Foto 5"></div>
+                <div class="gallery-item reveal-right delay-2"><img src="oga4.jpeg" alt="Foto 6"></div>
+                <div class="gallery-item reveal-right delay-3"><img src="ogb2.jpeg" alt="Foto 7"></div>
+                <div class="gallery-item reveal-right delay-1"><img src="ogb3.jpeg" alt="Foto 8"></div>
             </div>
         </div>
 
@@ -680,6 +746,15 @@
             </footer>
         </div>
 
+    </div>
+
+    <!-- ELEMEN POPUP LIGHTBOX FOTO & TOMBOL UNDUH -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Preview Foto">
+        <a id="lightbox-download" class="lightbox-download-btn" href="" download target="_blank">
+            <span>📥</span> Unduh Gambar
+        </a>
     </div>
 
     <script>
@@ -840,6 +915,32 @@
 
         document.getElementById('mainWrapper').addEventListener('scroll', triggerScrollAnim);
         window.addEventListener('DOMContentLoaded', triggerScrollAnim);
+
+        // FUNGSI UNTUK MEMBUKA, MENUTUP & MENGUNDUH FOTO GALERI
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const downloadBtn = document.getElementById('lightbox-download');
+            
+            lightboxImg.src = imgSrc;
+            downloadBtn.href = imgSrc;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryImages = document.querySelectorAll('.gallery-item img');
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    openLightbox(img.src);
+                });
+            });
+        });
     </script>
 </body>
 </html>
